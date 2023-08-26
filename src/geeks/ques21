@@ -1,0 +1,20 @@
+// https://practice.geeksforgeeks.org/problems/remove-duplicates-from-an-unsorted-linked-list/1
+class Solution
+{
+    //Function to remove duplicates from unsorted linked list.
+    public Node removeDuplicates(Node head)
+    {
+        HashSet<Integer> hs = new HashSet<Integer>();
+        Node temp = head;
+        hs.add(temp.data);
+        while(temp.next != null){
+            if(!hs.contains(temp.next.data)){
+                hs.add(temp.next.data);
+                temp = temp.next;
+            }else{
+                temp.next = temp.next.next;
+            }
+        }
+        return head;
+    }
+}

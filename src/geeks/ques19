@@ -1,0 +1,25 @@
+/https://practice.geeksforgeeks.org/problems/44bb5287b98797782162ffe3d2201621f6343a4b/1?utm_source=geeksforgeeks&utm_medium=ml_article_practice_tab&utm_campaign=article_practice_tab
+class Solution {
+    //Function to find first node if the linked list has a loop.
+    public static int findFirstNode(Node head){
+        Node slow  = head;
+        Node fast = head;
+        while(fast!= null && fast.next != null){
+            slow = slow.next;
+            fast = fast.next.next;
+            if(slow == fast){
+                return getfirstNode(head,slow);
+            }
+        }
+        return -1;
+    }
+    public static int getfirstNode(Node head , Node slowptr){
+        Node temp = head;
+        while(temp != slowptr){
+            temp = temp.next;
+            slowptr = slowptr.next;
+        }
+        return temp.data;
+    }
+
+}
